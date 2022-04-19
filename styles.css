@@ -26,6 +26,7 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
 .flipping{
   border-radius: 0;
   border-color: red;
@@ -42,4 +43,18 @@ body, a:link, a:visited, a:active{
     transform: rotate(360deg);
     border-color: blueviolet;
   }
+}
+
+@keyframes wiggleBounce {
+	0%, 20%, 50%, 80%, 100% {transform: translate(0, 0);}
+	40% {transform: translate(-30px, -30px);}
+	60% {transform: translate(-15px, -15px);}
+}
+
+.bouncy:hover {
+  border-color: aliceblue;
+}
+
+.neighbor {
+  border-color: pink;
 }

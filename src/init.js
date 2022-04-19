@@ -1,20 +1,15 @@
+/* Agenda
+1. Line up on opposite sides
+2. Mouseover dancer
+3. Interactive dancer
+4. Tests
+5. Make it pretty
+*/
+
 $(document).ready(function() {
   window.dancers = [];
 
   $('.addDancerButton').on('click', function(event) {
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on dancefloor.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
-
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
 
     // get the maker function for the kind of dancer we're supposed to make
@@ -23,8 +18,8 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $('body').height() * Math.random(),
+      $('body').width() * Math.random(),
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
@@ -33,9 +28,33 @@ $(document).ready(function() {
 
   $('.lineUpButton').on('click', function(event) {
     for (let i = 0; i < dancers.length; i++) {
-      let height = i * $("body").height() / dancers.length;
-      dancers[i].lineUp(height);
+      let width = (i + 0.5) * $('body').width() / dancers.length;
+      dancers[i].lineUp($('body').height() * 0.5, width);
     }
   });
+
+
+  $('body').on('click', '.dancer', function(event) {
+    console.log('hi');
+    var $position = $(this).position();
+    var y1 = $position.top;
+    var x1 = $position.left;
+
+    var closestNeighbor, x2, y2, distance;
+
+    for (let i = 0; i < dancers.length; i++) {
+      var $position2 = dancers[i].$node.position();
+      y2 = $position2.top;
+      x2 = $position2.left;
+      distance = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+      if (distance !== 0 && distance < 400) {
+        dancers[i].$node.addClass('neighbor');
+      }
+    }
+  });
+
 });
+
+
+
 
