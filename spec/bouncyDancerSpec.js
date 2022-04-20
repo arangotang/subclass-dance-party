@@ -12,11 +12,8 @@ describe('bouncyDancer', function() {
     expect(bouncyDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  it('should use css which makes it bounce', function() {
-    let oldPosition = bouncyDancer.$node.position();
-    clock.tick(timeBetweenSteps * 0.4);
-    let newPosition = bouncyDancer.$node.position();
-    expect(oldPosition).to.not.be.eql(newPosition);
+  it('should be animated', function() {
+    expect(bouncyDancer.$node.css('animation')).to.not.equal(undefined);
   });
 
   describe('dance', function() {

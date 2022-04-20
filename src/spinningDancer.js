@@ -1,11 +1,11 @@
-var FlippingDancer = function(top, left, timeBetweenSteps) {
+var SpinningDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
 };
 
-FlippingDancer.prototype = Object.create(Dancer.prototype);
-FlippingDancer.prototype.constructor = FlippingDancer;
+SpinningDancer.prototype = Object.create(Dancer.prototype);
+SpinningDancer.prototype.constructor = SpinningDancer;
 
-FlippingDancer.prototype.setPosition = function(top, left) {
+SpinningDancer.prototype.setPosition = function(top, left) {
   var spinSettings = {
     top: top,
     left: left,

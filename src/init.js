@@ -1,11 +1,3 @@
-/* Agenda
-1. Line up on opposite sides
-2. Mouseover dancer
-3. Interactive dancer
-4. Tests
-5. Make it pretty
-*/
-
 $(document).ready(function() {
   window.dancers = [];
 
@@ -54,7 +46,3 @@ $(document).ready(function() {
   });
 
 });
-
-
-
-
